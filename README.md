@@ -1,4 +1,4 @@
 CodeBin
 ==================
 
-Nothing useful, just for fun!
+For academics purposes
