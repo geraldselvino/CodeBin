@@ -1,3 +1,9 @@
+/**********************************************************
+* Copyright (c) 2017, Gerald Selvino
+* <gerald.selvino@protonmail.com> All rights reserved.
+*
+* A simple driver app for the ProcessFile class
+***********************************************************/
 #include "ProcessFile.h"
 
 int main(int argc, char** argv) {
