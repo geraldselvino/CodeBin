@@ -14,6 +14,8 @@ bool ProcessFile::showWordFrequencies(string const& path) {
     thread threads[FILE_COUNT];
     for (uint32_t i = 0; i < FILE_COUNT; ++i) {
         threads[i] = spawnThread(i);
+    }
+    for (uint32_t i = 0; i < FILE_COUNT; ++i) {
         threads[i].join();
     }
 
