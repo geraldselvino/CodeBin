@@ -8,12 +8,8 @@ example:
 
 Steps to test:
 ==============
-1. To test this program, you simply extract the tarball to a directory  
-    tar -xvf Irdeto-POSIX-IPC-test.tar  
-2. go to the extraction directory  
-    cd Irdeto-POSIX-IPC-test  
-3. compile the program  
-    make  
-4. run it  
-    ./posixipc  
+1. To test this program, you simply download the files into 1 directory
+2. go to the directory using a terminal
+3. compile the program by typing "make"
+4. run it with "./statemachine" or "sh statemachine"
     
