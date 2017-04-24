@@ -9,14 +9,11 @@ ________________________________________
 |State  |Event              |Next state|
 ----------------------------------------
 |GUARD  |Guard time expired |ACTIVE    |
-----------------------------------------
 |ACTIVE |Active time expired|STOP      |
-----------------------------------------
 |STOP   |Stop time expired  |GUARD     |
-----------------------------------------
 
 The configuration file is in format STATE=ExpiryTime. 1 line per entry/state  
-example: 
+example:  
    ACTIVE=1  
    GUARD=2  
    STOP=3  
