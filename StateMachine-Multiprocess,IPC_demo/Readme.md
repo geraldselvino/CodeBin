@@ -5,12 +5,12 @@ for states and its expiration time, it then start with the first entry in the
 config file as the initial state, changing states as the expiration time of the 
 current state is reached. Illustrated in the table below is the flow of 
 the state machine which is simple.
-________________________________________
-|State  |Event              |Next state|
-----------------------------------------
-|GUARD  |Guard time expired |ACTIVE    |
-|ACTIVE |Active time expired|STOP      |
-|STOP   |Stop time expired  |GUARD     |
+
+State  |Event              |Next state
+--------------------------------------
+GUARD  |Guard time expired |ACTIVE   
+ACTIVE |Active time expired|STOP     
+STOP   |Stop time expired  |GUARD    
 
 The configuration file is in format STATE=ExpiryTime. 1 line per entry/state  
 example:  
