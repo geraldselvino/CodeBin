@@ -7,7 +7,7 @@ current state is reached. Illustrated in the table below is the flow of
 the state machine which is simple.
 
 State  |Event              |Next state
---------------------------------------
+-------|-------------------|----------
 GUARD  |Guard time expired |ACTIVE   
 ACTIVE |Active time expired|STOP     
 STOP   |Stop time expired  |GUARD    
