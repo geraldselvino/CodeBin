@@ -9,30 +9,31 @@ searched by the program can be changed through the FILE_COUNT macro in the
 ProcessFile class, by default it is 10 i.e. "data_1.txt" - "data_10.txt".
 
 **Sample text file format**  
-*[data_1.txt]*
-`rose
-ivy
-crimson
-tide
-cresantimum
-sunflower
-tulips
-`
+*data_1.txt*  
+`rose  
+ivy  
+crimson  
+tide  
+cresantimum  
+sunflower  
+tulips  
+`  
 
-*[data_2.txt]
-`amber
-sampaguita
-mulberry
-rose
-tide
-strawberry
-rose
-red
-`
-**Sample output**
-`3   rose
-2   tide
-`
+*data_2.txt*  
+`amber  
+sampaguita  
+mulberry  
+rose  
+tide  
+strawberry  
+rose  
+red  
+`  
+
+**Sample output**  
+`3   rose  
+2   tide  
+`  
 
 Purpose
 ========
