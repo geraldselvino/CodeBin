@@ -32,7 +32,7 @@ PosixIPC::~PosixIPC() {
 
 bool PosixIPC::init(pid_t pid) {
     if (pid == 0) { //Child process
-        nanosleep((const struct timespec[]){{0, 3000000000L}}, NULL); //Sleep for 100ms so the parent process is guaranteed to inititalized first
+        nanosleep((const struct timespec[]){{0, 5000000000L}}, NULL); //Sleep for 500ms so the parent process is guaranteed to inititalized first
         mutexsemaphore = sem_open(MUTEXSEMAPHORE_NAME, O_RDWR, 0, 0);
         sharedmemfd = shm_open(SHAREDMEMORY_NAME, O_RDWR, S_IRWXU | S_IRWXG | S_IRWXO);
     } else { //Parent process
@@ -101,7 +101,9 @@ bool PosixIPC::readConfigurationFile(string const& confpath) {
             State stateitem;
             stateitem.name = strline.substr(0, pos);
             stateitem.expirytime = atoi(strline.substr(pos + 1, strline.length() - pos).c_str());
-            states.push_back(stateitem);
+            states[stateitem.name] = stateitem;
+            if (initialstate.empty())
+                initialstate = stateitem.name;
         }
     }
     return true;
@@ -113,52 +115,49 @@ bool PosixIPC::startLoop() {
         return false;
     }
     uint32_t sequence = 1;
-    uint16_t statesindex = 0;
+    string statesindex = initialstate;
     time_t ticksnow = time(NULL);
-    bool writetobuffer = true;
 
     while(true) {
         time_t timediff = time(NULL) - ticksnow;
         if (timediff >= states[statesindex].expirytime) {
             ++sequence;
-            writetobuffer = true;
             ticksnow = time(NULL);
             timediff = 0;
-            if (statesindex == 2)
-                statesindex = 0;
-            else
-                ++statesindex;
+            if (statesindex == "GUARD")
+                statesindex = "ACTIVE";
+            else if (statesindex == "ACTIVE")
+                statesindex = "STOP";
+            else if (statesindex == "STOP")
+                statesindex = "GUARD";
         }
 
-        if (writetobuffer) {
-            ostringstream concatstr;
-            concatstr.clear();
-            concatstr.str(string());
+        ostringstream concatstr;
+        concatstr.clear();
+        concatstr.str(string());
 
-            uint32_t remainingtime = states[statesindex].expirytime - timediff;
-            concatstr << states[statesindex].name << "," << remainingtime << "," << sequence;
-            if (sem_wait (mutexsemaphore) == -1) { //Guard the writing with mutex semaphore
-                perror ("sem_wait failed");
-                cleanup();
-                return false;
-            }
-
-            int size = snprintf(buffer, buffersize, concatstr.str().c_str()); //Write the states to the shared buffer
-            if (size <= 0) {
-                perror("writing to shared buffer failed");
-                cleanup();
-                return false;
-            }
-
-            if (sem_post(mutexsemaphore) == -1) { //Release the mutex semaphore
-                perror ("sem_post failed");
-                cleanup();
-                return false;
-            }
-            writetobuffer = false;
+        uint32_t remainingtime = states[statesindex].expirytime - timediff;
+        concatstr << states[statesindex].name << "," << remainingtime << "," << sequence;
+        if (sem_wait (mutexsemaphore) == -1) { //Guard the writing with mutex semaphore
+            perror ("sem_wait failed");
+            cleanup();
+            return false;
         }
 
-        nanosleep((const struct timespec[]){{0, 30000000L}}, NULL);
+        int size = snprintf(buffer, buffersize, concatstr.str().c_str()); //Write the states to the shared buffer
+        if (size <= 0) {
+            perror("writing to shared buffer failed");
+            cleanup();
+            return false;
+        }
+
+        if (sem_post(mutexsemaphore) == -1) { //Release the mutex semaphore
+            perror ("sem_post failed");
+            cleanup();
+            return false;
+        }
+
+        nanosleep((const struct timespec[]){{0, 50000000L}}, NULL);
     }
 
     return true;

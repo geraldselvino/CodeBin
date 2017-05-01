@@ -9,7 +9,7 @@
 
 #include <stdint.h>
 #include <stdio.h>
-#include <vector>
+#include <map>
 #include <string>
 #include <semaphore.h>
 #include <sys/stat.h>
@@ -76,7 +76,8 @@ private:
     string currentstatus;
     string currentsequence;
     string timeremaining;
-    vector<State> states; 
+    map<string, State> states; 
+    string initialstate;
 
     int sharedmemfd;
     char* buffer;
