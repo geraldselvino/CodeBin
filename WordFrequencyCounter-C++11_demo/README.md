@@ -10,30 +10,27 @@ ProcessFile class, by default it is 10 i.e. "data_1.txt" - "data_10.txt".
 
 **Sample text file format**  
 *data_1.txt*  
-`rose  
+rose  
 ivy  
 crimson  
 tide  
 cresantimum  
 sunflower  
 tulips  
-`  
 
 *data_2.txt*  
-`amber  
+amber  
 sampaguita  
 mulberry  
 rose  
 tide  
 strawberry  
 rose  
-red  
-`  
+red   
 
 **Sample output**  
-`3   rose  
+3   rose  
 2   tide  
-`  
 
 Purpose
 ========
