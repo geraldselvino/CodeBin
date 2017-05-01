@@ -15,8 +15,6 @@ int main(int argc, char **argv)
     PosixIPC statemachine;
 
     forkedpid = fork();
-    if (forkedpid == 0)
-        nanosleep((const struct timespec[]){{0, 1000000000L}}, NULL); //Sleep for 100ms so the parent process is guaranteed to start first
 
     if (!statemachine.init(forkedpid)) {
         perror("Initialization failed");

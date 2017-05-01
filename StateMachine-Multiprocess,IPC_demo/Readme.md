@@ -3,8 +3,9 @@ StateMachine
 This a simple state machine that reads a config file (default is states.conf)
 for states and its expiration time, it then start with the first entry in the 
 config file as the initial state, changing states as the expiration time of the 
-current state is reached. Illustrated in the table below is the flow of 
-the state machine which is simple.
+current state is reached. The user can then query the current state, time 
+remaining before expiration, and current sequence. Illustrated in the table 
+below is the flow of the state machine.
 
 State  |Event              |Next state
 -------|-------------------|----------
@@ -30,5 +31,5 @@ Steps to test
 1. To test this program, you simply download the files into 1 directory
 2. go to the directory using a terminal/shell
 3. compile the program by typing "make"
-4. run it with "./statemachine" or "sh statemachine"
+4. run it with "./statemachine"
     

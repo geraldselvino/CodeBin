@@ -32,6 +32,7 @@ PosixIPC::~PosixIPC() {
 
 bool PosixIPC::init(pid_t pid) {
     if (pid == 0) { //Child process
+        nanosleep((const struct timespec[]){{0, 3000000000L}}, NULL); //Sleep for 100ms so the parent process is guaranteed to inititalized first
         mutexsemaphore = sem_open(MUTEXSEMAPHORE_NAME, O_RDWR, 0, 0);
         sharedmemfd = shm_open(SHAREDMEMORY_NAME, O_RDWR, S_IRWXU | S_IRWXG | S_IRWXO);
     } else { //Parent process
@@ -157,7 +158,7 @@ bool PosixIPC::startLoop() {
             writetobuffer = false;
         }
 
-        nanosleep((const struct timespec[]){{0, 50000000L}}, NULL);
+        nanosleep((const struct timespec[]){{0, 30000000L}}, NULL);
     }
 
     return true;
@@ -173,8 +174,10 @@ bool PosixIPC::readValues() {
     if (buffer != NULL) { //Read the buffer and put it to variables
         char* token;
         char* tokens[3];
+        char* localbuffer = new char[buffersize];
         memset(tokens, 0, sizeof(tokens));
-        token = strtok (buffer,",");
+        memcpy(localbuffer, buffer, buffersize); //Copy to local buffer to make it thread safe
+        token = strtok (localbuffer,",");
         uint16_t tkindex = 0;
         while (token != NULL) {
             tokens[tkindex] = token;
@@ -184,6 +187,7 @@ bool PosixIPC::readValues() {
         currentstatus = tokens[0];
         timeremaining = tokens[1];
         currentsequence = tokens[2];
+        delete[] localbuffer;
     }
 
     if (sem_post(mutexsemaphore) == -1) { //Release the mutex
@@ -200,25 +204,28 @@ void PosixIPC::showConsole() {
     cout << "[c]urrent state" << endl;
     cout << "[t]ime remaining" << endl;
     cout << "[s]equence number" << endl;
+    cout << "[q]uit" << endl;
     cout << endl;
 
-    cout << "Select what you want to display: ";
-    cin >> code;
-    if (!readValues())
-        perror("Unable to read values from shared memory");
+    do {
+        cout << "Key in your choice: ";
+        cin >> code;
+        if (!readValues())
+            perror("Unable to read values from shared memory");
 
-    switch(code) {
-        cout << endl << endl;
-        case 'c':
-            cout << "The current STATE is: " << currentstatus << endl;
-            break;
-        case 't':
-            cout << "The time remaining before the next state is: " << timeremaining << endl;
-            break;
-        case 's':
-            cout << "The current sequence number is: " << currentsequence << endl;
-            break;
-    }
+        switch(code) {
+            cout << endl << endl;
+            case 'c':
+                cout << "The current STATE is: " << currentstatus << endl;
+                break;
+            case 't':
+                cout << "The time remaining before the next state is: " << timeremaining << endl;
+                break;
+            case 's':
+                cout << "The current sequence number is: " << currentsequence << endl;
+                break;
+        }
+    } while (code != 'q');
     
     kill(0, SIGINT);
 }
