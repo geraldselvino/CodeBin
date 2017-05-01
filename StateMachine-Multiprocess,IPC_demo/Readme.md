@@ -4,8 +4,8 @@ This a simple state machine that reads a config file (default is states.conf)
 for states and its expiration time, it then start with the first entry in the 
 config file as the initial state, changing states as the expiration time of the 
 current state is reached. The user can then query the current state, time 
-remaining before expiration, and current sequence. Illustrated in the table 
-below is the flow of the state machine.
+remaining before expiration, and current sequence via a console. Illustrated in 
+the table below is the flow of the state machine.
 
 State  |Event              |Next state
 -------|-------------------|----------
