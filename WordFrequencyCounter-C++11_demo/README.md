@@ -32,11 +32,11 @@ red
 2   tide  
 
 Requirement
-============================
+===========
 c++11 compliant compiler  
 
 Purpose
-============================
+=======
 The program is a good illustration of practical usage of a few important C++11
 additions / features like std::threads, std::mutex, lambda, C++11 initializers,
 defaulted and deleted (ctor, dtor, copy ctor, assignment oprtr)

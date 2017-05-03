@@ -1,11 +1,11 @@
 CodeBin
-==================
+=======
 
 A mix of codes mainly for learning purposes. This repository is interested in algorithms, programming concepts, language features, and proof of concepts codes aimed at students, researchers, or anyone
 who likes learning through practical examples.
 
 License
-============================
+=======
 Copyright (c) 2017, Gerald Selvino <gerald.selvino@protonmail.com>
 All rights reserved.
 

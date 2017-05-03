@@ -7,7 +7,6 @@
 #include <map>
 #include <list>
 #include <string>
-#include <conio.h>
 
 using namespace std;
 
@@ -132,7 +131,5 @@ int main(int argc, char* argv[])
         cout<<endNode->_name<<endl;
         endNode = endNode->_prev;
     }
-
-    _getch();
 }
 

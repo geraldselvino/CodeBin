@@ -1,11 +1,9 @@
 /**********************************************
 * Author: Gerald Selvino
-* Date: January 11, 2013
-* Description: Spotify Reverse binary problem
-* Problem ID: reversebinary
+* Description: Displays the reversed binary 
+*              decimal equivalent of a number
 * Language: C
 ***********************************************/
-
 #include <stdio.h>
 #include <stdlib.h>
 
