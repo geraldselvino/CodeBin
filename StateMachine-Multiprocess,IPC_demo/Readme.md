@@ -23,7 +23,7 @@ A high level architecture diagram is found in StateMachine-architecture.pdf
 
 Requirement
 ===========
-POSIX compliant OS (not Windows)
+POSIX compliant OS (not Windows)  
 make  
 g++  
 
