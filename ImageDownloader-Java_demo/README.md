@@ -9,4 +9,4 @@ jsoup 1.7 (included in /3rdParty folder)
 
 Purpose
 =======
-This application is a practical demo of java GUI programming using Swing and multithreading in java.
+This application is a practical demo of java GUI programming using Swing and worker thread in java.
