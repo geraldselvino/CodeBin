@@ -18,41 +18,41 @@ Priority  |Rule          |Condition                       |Cost
 4         |Medium Parcel |If the volume is less than 2500 |$0.04 x Volume
 5(lowest) |Large Parcel  |                                |$0.03 x Volume
 
-Note: Volume is calculated by Height x Width x Depth.
-Note: The rule matched with the highest priority should be used to calculate the cost of delivery.
+*Note: Volume is calculated by Height x Width x Depth.*  
+*Note: The rule matched with the highest priority should be used to calculate the cost of delivery.*  
 
 **Examples**
-1. Enter Weight in kg: 10
-   Enter Height in cm: 20
-   Enter Width in cm: 5
-   Enter Depth: 20
+1. Enter Weight in kg: 10  
+   Enter Height in cm: 20  
+   Enter Width in cm: 5  
+   Enter Depth: 20  
    
-   Category: Medium Parcel
-   Cost: $80
+   Category: Medium Parcel  
+   Cost: $80  
    
-2. Enter Weight in kg: 22
-   Enter Height in cm: 5
-   Enter Width in cm: 5
-   Enter Depth: 5
+2. Enter Weight in kg: 22  
+   Enter Height in cm: 5  
+   Enter Width in cm: 5  
+   Enter Depth: 5  
    
-   Category: Heavy Parcel
-   Cost: $330
+   Category: Heavy Parcel  
+   Cost: $330  
 
-3. Enter Weight in kg: 2
-   Enter Height in cm: 3
-   Enter Width in cm: 10
-   Enter Depth: 12
+3. Enter Weight in kg: 2  
+   Enter Height in cm: 3  
+   Enter Width in cm: 10  
+   Enter Depth: 12  
 
-   Category: Small Parcel
-   Cost: $18
+   Category: Small Parcel  
+   Cost: $18  
 
-4. Enter Weight in kg: 110
-   Enter Height in cm: 20
-   Enter Width in cm: 55
-   Enter Depth: 120
+4. Enter Weight in kg: 110  
+   Enter Height in cm: 20  
+   Enter Width in cm: 55  
+   Enter Depth: 120  
  
-   Category: Rejected
-   Cost: N/A
+   Category: Rejected  
+   Cost: N/A  
 
 Requirement
 ===========
