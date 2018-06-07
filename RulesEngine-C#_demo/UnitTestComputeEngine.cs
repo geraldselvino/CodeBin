@@ -1,3 +1,11 @@
+/**********************************************************
+* Copyright (c) 2017, Gerald Selvino
+* <gerald.selvino@protonmail.com> All rights reserved.
+*
+* A unit test for our demo code. Uses VisualStudio's
+* built-in UnitTesting
+***********************************************************/
+
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using RulesEngine;

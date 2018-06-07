@@ -1,3 +1,11 @@
+/**********************************************************
+* Copyright (c) 2017, Gerald Selvino
+* <gerald.selvino@protonmail.com> All rights reserved.
+*
+* The parameter class used to hold the parameters passed
+* from the calling client to the Rules class
+***********************************************************/
+
 ﻿namespace RulesEngine
 {
     struct ComputeParameters

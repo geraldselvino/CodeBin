@@ -1,3 +1,11 @@
+/**********************************************************
+* Copyright (c) 2017, Gerald Selvino
+* <gerald.selvino@protonmail.com> All rights reserved.
+*
+* The Main() function. This is the entry point of the
+* program.
+***********************************************************/
+
 ﻿using System;
 using System.Collections.Generic;
 

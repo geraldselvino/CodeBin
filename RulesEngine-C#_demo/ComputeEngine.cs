@@ -1,3 +1,11 @@
+/**********************************************************
+* Copyright (c) 2017, Gerald Selvino
+* <gerald.selvino@protonmail.com> All rights reserved.
+*
+* The class that performs the computation, calling the
+* specific function tied to each rule
+***********************************************************/
+
 ﻿using System.Collections.Generic;
 
 namespace RulesEngine

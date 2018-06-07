@@ -1,3 +1,12 @@
+/**********************************************************
+* Copyright (c) 2017, Gerald Selvino
+* <gerald.selvino@protonmail.com> All rights reserved.
+*
+* This is a parameter class for each rule that we create
+* in this example. It holds the needed variables that
+* our rules method needs to perform calculations
+***********************************************************/
+
 ﻿namespace RulesEngine
 {
     struct RulesParameters

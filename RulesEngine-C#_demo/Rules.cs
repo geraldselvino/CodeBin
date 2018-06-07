@@ -1,3 +1,13 @@
+/**********************************************************
+* Copyright (c) 2017, Gerald Selvino
+* <gerald.selvino@protonmail.com> All rights reserved.
+*
+* This is where the Business rules / logic are defined.
+* For each rule that you create, you create a method that
+* follows the delegate format, and you add those in the
+* rules table as seen here in the constructor
+***********************************************************/
+
 ﻿using System.Collections.Generic;
 
 namespace RulesEngine
